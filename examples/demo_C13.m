@@ -38,13 +38,13 @@ opt = ss_opt({'Nucleus', 'Carbon', ...
       
 % SPECTRAL PULSE PARAMETERS 
 B0 = 3e4; % G
-df = 0.5e-6 * B0 * SS_GAMMA; % 0.5 ppm = gamma_C13 * B0 * 0.5e-6
+df = 500;  % passband width (Hz)
 % metabolite			frequency (Hz)		freq bandwidth (Hz)		flip angle (deg)	allowed ripple
-mets(1).name = 'urea'; 	mets(1).f = -465; 	mets(1).df = 1.5*df; 		mets(1).ang = 6; 	mets(1).d = .005;
-mets(2).name = 'pyr'; 	mets(2).f = -230; 	mets(2).df = 2*df; 		mets(2).ang = 6; 	mets(2).d = .002;
-mets(3).name = 'ala'; 	mets(3).f = -45; 	mets(3).df = 1.5*df; 	mets(3).ang = 12; 	mets(3).d = .005;
-mets(4).name = 'pyrh'; 	mets(4).f = 40; 	mets(4).df = 1*df; 		mets(4).ang = 2.5; 	mets(4).d = .015;
-mets(5).name = 'lac'; 	mets(5).f = 165; 	mets(5).df = 1.5*df; 	mets(5).ang = 12; 	mets(5).d = .005;
+mets(1).name = 'urea';  mets(1).f = -465;       mets(1).df = df; 		mets(1).ang = 6; 	mets(1).d = .005;
+mets(2).name = 'pyr'; 	mets(2).f = -230; 	mets(2).df = df; 		mets(2).ang = 6; 	mets(2).d = .002;
+mets(3).name = 'ala'; 	mets(3).f = -45; 	mets(3).df = df; 	mets(3).ang = 12; 	mets(3).d = .005;
+mets(4).name = 'pyrh'; 	mets(4).f = 40; 	mets(4).df = df; 		mets(4).ang = 2.5; 	mets(4).d = .015;
+mets(5).name = 'lac'; 	mets(5).f = 165; 	mets(5).df = df; 	mets(5).ang = 12; 	mets(5).d = .005;
 
 % create vectors of angles, ripples, and band edges for input to pulse design
 [fspec, a_angs, d] = create_freq_specs(mets);
@@ -52,7 +52,7 @@ fctr = 0;  % force pulse design to optimize for center of frequency specificatio
 s_ftype = 'lin';  % linear-phase spectral filter
 
 % SPATIAL PULSE PARAMETERS
-z_thk = .5;  % thickness (cm)
+z_thk = 1;  % thickness (cm)
 z_tb = 3; % time-bandwidth, proportional to profile sharpness
 z_ftype='ls';  % least-squares filter design
 z_d1 = 0.01;  z_d2 = 0.01;  % slice profile pass and stop-band ripples, respectively
@@ -127,10 +127,10 @@ opt = ss_opt({'Nucleus', 'Carbon', ...
       
 % SPECTRAL PULSE PARAMETERS 
 B0 = 3e4; % G
-df = 0.5e-6 * B0 * SS_GAMMA; % 0.5 ppm = gamma_C13 * B0 * 0.5e-6
+df = 500;  % passband width (Hz)
 % metabolite			frequency (Hz)		freq bandwidth (Hz)		flip angle (deg)	allowed ripple
-mets(1).name = 'pyr'; 	mets(1).f = -230; 	mets(1).df = 2*df; 		mets(1).ang = 6; 	mets(1).d = .005;
-mets(2).name = 'lac'; 	mets(2).f = 165; 	mets(2).df = 2*df;      mets(2).ang = 12; 	mets(2).d = .005;
+mets(1).name = 'pyr'; 	mets(1).f = -230; 	mets(1).df = df; 		mets(1).ang = 6; 	mets(1).d = .005;
+mets(2).name = 'lac'; 	mets(2).f = 165; 	mets(2).df = df;      mets(2).ang = 12; 	mets(2).d = .005;
 
 % create vectors of angles, ripples, and band edges for input to pulse design
 [fspec, a_angs, d] = create_freq_specs(mets);
@@ -138,7 +138,7 @@ fctr = 0;  % force pulse design to optimize for center of frequency specificatio
 s_ftype = 'lin';  % linear-phase spectral filter
 
 % SPATIAL PULSE PARAMETERS
-z_thk = .5;  % thickness (cm)
+z_thk = 1;  % thickness (cm)
 z_tb = 3; % time-bandwidth, proportional to profile sharpness
 z_ftype='ls';  % least-squares filter design
 z_d1 = 0.01;  z_d2 = 0.01;  % slice profile pass and stop-band ripples, respectively
@@ -168,12 +168,12 @@ opt = ss_opt({'Nucleus', 'Carbon', ...
 % SPECTRAL PULSE PARAMETERS  - large pass/stop bands chosen for wide
 % supression regions
 B0 = 3e4; % G
-df = 0.5e-6 * B0 * SS_GAMMA; % 0.5 ppm = gamma_C13 * B0 * 0.5e-6
+df = 500;  % passband width (Hz)
 % metabolite			frequency (Hz)		freq bandwidth (Hz)		flip angle (deg)
-mets(1).name = 'pyr'; 	mets(1).f = -230; 	mets(1).df = 2*df; 		mets(1).ang = 0; 
-mets(2).name = 'ala'; 	mets(2).f = -45; 	mets(2).df = 3*df;      mets(2).ang = 0; 
-mets(3).name = 'pyrh'; 	mets(3).f = 40; 	mets(3).df = 2*df; 		mets(3).ang = 0; 
-mets(4).name = 'lac'; 	mets(4).f = 165; 	mets(4).df = 2*df;      mets(4).ang = 90; 
+mets(1).name = 'pyr'; 	mets(1).f = -230; 	mets(1).df = df; 		mets(1).ang = 0; 
+mets(2).name = 'ala'; 	mets(2).f = -45; 	mets(2).df = df;      mets(2).ang = 0; 
+mets(3).name = 'pyrh'; 	mets(3).f = 40; 	mets(3).df = df; 		mets(3).ang = 0; 
+mets(4).name = 'lac'; 	mets(4).f = 165; 	mets(4).df = df;      mets(4).ang = 90; 
 
 % create vectors of angles, ripples, and band edges for input to pulse design
 [fspec, a_angs, d] = create_freq_specs(mets);
@@ -181,7 +181,7 @@ fctr = 0;  % force pulse design to optimize for center of frequency specificatio
 s_ftype = 'min';  % minimum-phase spectral filter
 
 % SPATIAL PULSE PARAMETERS
-z_thk = .5;  % thickness (cm)
+z_thk = 1;  % thickness (cm)
 z_tb = 4; % time-bandwidth, proportional to profile sharpness
 z_ftype='ls';  % least-squares filter design
 z_d1 = 0.01;  z_d2 = 0.01;  % slice profile pass and stop-band ripples, respectively
@@ -213,12 +213,12 @@ opt = ss_opt({'Nucleus', 'Carbon', ...
 % SPECTRAL PULSE PARAMETERS  - large pass/stop bands chosen for wide
 % supression regions
 B0 = 14.1e4; % G
-df = 0.5e-6 * B0 * SS_GAMMA; % 0.5 ppm = gamma_C13 * B0 * 0.5e-6
+df = 500;  % passband width (Hz)
 % metabolite			frequency (Hz)		freq bandwidth (Hz)		flip angle (deg)
-mets(1).name = 'pyr'; 	mets(1).f = -1080; 	mets(1).df = 2*df; 		mets(1).ang = 0; 
-mets(2).name = 'ala'; 	mets(2).f = -210; 	mets(2).df = 2*df;      mets(2).ang = 0; 
-mets(3).name = 'pyrh'; 	mets(3).f = 190; 	mets(3).df = 2*df; 		mets(3).ang = 0; 
-mets(4).name = 'lac'; 	mets(4).f = 775; 	mets(4).df = 2*df;      mets(4).ang = 90; 
+mets(1).name = 'pyr'; 	mets(1).f = -1080; 	mets(1).df = df; 		mets(1).ang = 0; 
+mets(2).name = 'ala'; 	mets(2).f = -210; 	mets(2).df = df;      mets(2).ang = 0; 
+mets(3).name = 'pyrh'; 	mets(3).f = 190; 	mets(3).df = df; 		mets(3).ang = 0; 
+mets(4).name = 'lac'; 	mets(4).f = 775; 	mets(4).df = df;      mets(4).ang = 90; 
 
 % create vectors of angles, ripples, and band edges for input to pulse design
 [fspec, a_angs, d] = create_freq_specs(mets);
@@ -226,7 +226,7 @@ fctr = 0;  % force pulse design to optimize for center of frequency specificatio
 s_ftype = 'min';  % minimum-phase spectral filter
 
 % SPATIAL PULSE PARAMETERS
-z_thk = .5;  % thickness (cm)
+z_thk = 1;  % thickness (cm)
 z_tb = 3.5; % time-bandwidth, proportional to profile sharpness
 z_ftype='ls';  % least-squares filter design
 z_d1 = 0.01;  z_d2 = 0.01;  % slice profile pass and stop-band ripples, respectively
